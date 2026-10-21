@@ -1,17 +1,15 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Pause, Volume2, VolumeX } from 'lucide-react';
+import { ArrowRight, CheckCircle, Maximize2, Volume2, VolumeX, X } from 'lucide-react';
 import { siteConfig } from '../data/mockData';
 
 const POINTS = ['Heavy-duty build quality', 'Custom gym setups', 'Delivery across India'];
 
-// Plays while on screen (muted so browsers allow autoplay). Tap to pause, speaker button for sound.
-function ShowVideo({ src, poster, className, label, sound = false }) {
+// Plays while on screen (muted so browsers allow autoplay). Click or the button opens it big.
+function ShowVideo({ src, poster, className, label, sound = false, onExpand }) {
   const ref = useRef(null);
-  const userPaused = useRef(false);
   const [muted, setMuted] = useState(true);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const video = ref.current;
@@ -19,7 +17,7 @@ function ShowVideo({ src, poster, className, label, sound = false }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (!userPaused.current) video.play().catch(() => {});
+          video.play().catch(() => {});
         } else {
           video.pause();
         }
@@ -29,18 +27,6 @@ function ShowVideo({ src, poster, className, label, sound = false }) {
     observer.observe(video);
     return () => observer.disconnect();
   }, []);
-
-  const togglePlay = () => {
-    const video = ref.current;
-    if (!video) return;
-    if (video.paused) {
-      userPaused.current = false;
-      video.play().catch(() => {});
-    } else {
-      userPaused.current = true;
-      video.pause();
-    }
-  };
 
   const toggleMute = (e) => {
     e.stopPropagation();
@@ -60,9 +46,7 @@ function ShowVideo({ src, poster, className, label, sound = false }) {
         loop
         playsInline
         preload="metadata"
-        onPlay={() => setPaused(false)}
-        onPause={() => setPaused(true)}
-        onClick={togglePlay}
+        onClick={() => onExpand && onExpand({ src, poster })}
       />
       <span className="vs-label"><span className="vs-live" />{label}</span>
       {sound && (
@@ -70,12 +54,45 @@ function ShowVideo({ src, poster, className, label, sound = false }) {
           {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
       )}
-      {paused && <span className="vs-paused"><Pause size={26} /></span>}
+      <button type="button" className="vs-expand" onClick={() => onExpand && onExpand({ src, poster })} aria-label="Watch full screen">
+        <Maximize2 size={16} /><span>Full screen</span>
+      </button>
+    </div>
+  );
+}
+
+function Lightbox({ item, onClose }) {
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="vs-modal" role="dialog" aria-modal="true" aria-label="Video" onClick={onClose}>
+      <button type="button" className="vs-modal-close" onClick={onClose} aria-label="Close video"><X size={22} /></button>
+      <video
+        className="vs-modal-video"
+        src={item.src}
+        poster={item.poster}
+        autoPlay
+        loop
+        playsInline
+        controls
+        controlsList="nodownload"
+        onClick={(e) => e.stopPropagation()}
+      />
     </div>
   );
 }
 
 export default function VideoShowcase() {
+  const [modal, setModal] = useState(null);
   const phone = siteConfig.footer.contact.find((c) => c.type === 'Phone').value.replace(/\D/g, '');
 
   return (
@@ -116,6 +133,7 @@ export default function VideoShowcase() {
             className="vs-wide"
             label="Brand Film"
             sound
+            onExpand={setModal}
           />
           <div className="vs-phone">
             <span className="vs-notch" aria-hidden="true" />
@@ -124,10 +142,12 @@ export default function VideoShowcase() {
               poster="/videos/product-showcase-poster.jpg"
               className="vs-tall"
               label="Showcase"
+              onExpand={setModal}
             />
           </div>
         </div>
       </div>
+      {modal && <Lightbox item={modal} onClose={() => setModal(null)} />}
     </section>
   );
 }

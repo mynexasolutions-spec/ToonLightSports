@@ -4296,17 +4296,6 @@ html { scrollbar-width: thin; scrollbar-color: #fce300 #121418; }
 
 /* ===== GET A QUOTE: finishing touches ===== */
 .cta-panel { padding: 52px 56px; }
-.cta-panel::after {
-  content: "";
-  position: absolute;
-  right: -4%;
-  top: 50%;
-  width: 46%;
-  height: 120%;
-  transform: translateY(-50%);
-  background: radial-gradient(circle, rgba(37,211,102,0.16), transparent 62%);
-  pointer-events: none;
-}
 .cta-form { position: relative; z-index: 1; }
 
 /* inputs with icons */
@@ -5027,3 +5016,93 @@ html { scrollbar-width: thin; scrollbar-color: #fce300 #121418; }
   .ct-strip { height: 100px; min-height: 0; gap: 8px; }
   .ct-strip img { border-width: 3px; border-radius: 14px; }
 }
+
+/* remove the green glow behind the quote panel (it showed as a hard-edged green band) */
+.cta-panel::after { display: none; content: none; }
+
+/* ===== VIDEO: open big (lightbox) ===== */
+.vs-frame video { cursor: zoom-in; }
+.vs-expand {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 14px 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(10,11,13,0.7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.vs-expand:hover { background: #fff; color: #121418; transform: translateY(-1px); }
+.vs-tall .vs-expand { top: 26px; right: 8px; height: 30px; width: 30px; padding: 0; justify-content: center; }
+.vs-tall .vs-expand span { display: none; }
+
+.vs-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5,6,8,0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: vsModalIn 0.25s ease both;
+}
+.vs-modal-video {
+  display: block;
+  max-width: min(1200px, 100%);
+  max-height: 88vh;
+  max-height: 88dvh;
+  width: auto;
+  height: auto;
+  border-radius: 18px;
+  background: #000;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+  outline: none;
+}
+.vs-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.vs-modal-close:hover { background: var(--primary-color); color: #121418; transform: rotate(90deg); }
+@keyframes vsModalIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 600px) {
+  .vs-expand { top: 10px; right: 10px; height: 32px; padding: 0 11px 0 9px; font-size: 11px; }
+  .vs-modal { padding: 10px; }
+  .vs-modal-video { border-radius: 12px; max-height: 84vh; max-height: 84dvh; }
+  .vs-modal-close { top: 10px; right: 10px; width: 42px; height: 42px; }
+}
+@media (prefers-reduced-motion: reduce) { .vs-modal { animation: none; } }
+
+/* glows that were clipped into hard-edged bands (two-tone look): drop or make them fade fully inside their box */
+.ft-glow { display: none; }
+.cta-copy::before { display: none; }
+.vs-glow { background: radial-gradient(closest-side, rgba(190,200,215,0.10), transparent); }
+.gm-glow { background: radial-gradient(closest-side, rgba(252,227,0,0.10), transparent); }
