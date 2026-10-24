@@ -5277,3 +5277,10 @@ a.pop-name:hover { color: var(--primary-color); }
     min-height: calc(100svh - 87px - 52px);
   }
 }
+
+/* sidebar: never squash the rows - the drawer scrolls instead */
+@media (max-width: 768px) {
+  .nav.mobile-active { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .nav.mobile-active > * { flex-shrink: 0; }
+  .nav.mobile-active .nav-link { min-height: 56px; }
+}
