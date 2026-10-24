@@ -198,11 +198,11 @@ export default function Home() {
           <div className="pop-grid">
             {popularProducts.map((product) => (
               <div key={product.id} className="pop-card">
-                <Link href={`/product/${product.id}`} className="pop-img-wrap">
+                <a href={`https://wa.me/${waPhone}?text=${encodeURIComponent(`Hello! I'm interested in ${product.name} (${product.id}). Please share more details and pricing.`)}`} target="_blank" rel="noopener noreferrer" className="pop-img-wrap" aria-label={`Enquire about ${product.name} on WhatsApp`}>
                   <img src={product.image} alt={product.name} className="pop-img" loading="lazy" />
-                </Link>
+                </a>
                 <div className="pop-body">
-                  <Link href={`/product/${product.id}`} className="pop-name">{product.name}</Link>
+                  <a href={`https://wa.me/${waPhone}?text=${encodeURIComponent(`Hello! I'm interested in ${product.name} (${product.id}). Please share more details and pricing.`)}`} target="_blank" rel="noopener noreferrer" className="pop-name">{product.name}</a>
                   <div className="pop-actions">
                     <Link href={`/product/${product.id}`} className="pop-details"><span className="pop-view">View </span>Details</Link>
                     <a
@@ -307,7 +307,7 @@ export default function Home() {
                   <span className="tm-quote-icon"><Quote size={20} /></span>
                   <div className="tm-stars">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={16} fill={i < testimonial.rating ? 'var(--primary-color)' : 'transparent'} color={i < testimonial.rating ? '#c9a800' : '#cfd2d8'} />
+                      <Star key={i} size={16} fill={i < testimonial.rating ? 'var(--primary-color)' : 'transparent'} color={i < testimonial.rating ? '#15803d' : '#cfd2d8'} />
                     ))}
                   </div>
                   <p className="tm-text">{testimonial.quote}</p>

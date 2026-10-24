@@ -55,7 +55,7 @@ export default function BlogPostPage({ params }) {
               Before making a purchase, it's critical to assess your actual needs. Are you focusing on cardiovascular health, strength training, or a mix of both? A well-rounded space typically incorporates a balance of free weights, resistance machines, and cardio equipment.
             </p>
 
-            <div style={{ padding: '20px', backgroundColor: 'rgba(252, 227, 0, 0.1)', borderLeft: '4px solid var(--primary-color)', borderRadius: '0 8px 8px 0', margin: '30px 0', fontStyle: 'italic', fontWeight: '600', color: 'var(--bg-dark)' }}>
+            <div style={{ padding: '20px', backgroundColor: 'rgba(34,197,94, 0.1)', borderLeft: '4px solid var(--primary-color)', borderRadius: '0 8px 8px 0', margin: '30px 0', fontStyle: 'italic', fontWeight: '600', color: 'var(--bg-dark)' }}>
               "The best equipment is the one you will consistently use. Don't buy for the person you want to be tomorrow; buy for the habits you are building today."
             </div>
 

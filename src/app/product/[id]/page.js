@@ -132,11 +132,11 @@ export default function ProductDetailsPage({ params }) {
             <div className="pop-grid">
               {related.map((p) => (
                 <div key={p.id} className="pop-card">
-                  <Link href={`/product/${p.id}`} className="pop-img-wrap">
+                  <a href={`https://wa.me/${waNumber}?text=${encodeURIComponent(`Hello! I'm interested in ${p.name} (${p.id}). Please share more details and pricing.`)}`} target="_blank" rel="noopener noreferrer" className="pop-img-wrap" aria-label={`Enquire about ${p.name} on WhatsApp`}>
                     <img src={p.image} alt={p.name} className="pop-img" loading="lazy" />
-                  </Link>
+                  </a>
                   <div className="pop-body">
-                    <Link href={`/product/${p.id}`} className="pop-name">{p.name}</Link>
+                    <a href={`https://wa.me/${waNumber}?text=${encodeURIComponent(`Hello! I'm interested in ${p.name} (${p.id}). Please share more details and pricing.`)}`} target="_blank" rel="noopener noreferrer" className="pop-name">{p.name}</a>
                     <div className="pop-actions">
                       <Link href={`/product/${p.id}`} className="pop-details"><span className="pop-view">View </span>Details</Link>
                       <a

@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 
 // Background banners for the hero. Each slide has a wide (desktop) and a tall (phone) version.
 const SLIDES = [
-  { desktop: '/hero-banner.jpg', mobile: '/hero-banner-mobile.jpg' },
-  { desktop: '/hero-banner2.jpg', mobile: '/hero-banner-mobile2.jpg' },
-  { desktop: '/hero-banner3.jpg', mobile: '/hero-banner-mobile3.jpg' },
+  { desktop: '/hero-banner.png', mobile: '/hero-banner-mobile.png' },
+  { desktop: '/hero-banner2.png', mobile: '/hero-banner-mobile2.png' },
+  { desktop: '/hero-banner3.png', mobile: '/hero-banner-mobile3.png' },
 ];
 const INTERVAL = 5000;
 

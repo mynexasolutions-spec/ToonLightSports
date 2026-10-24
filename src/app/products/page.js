@@ -102,7 +102,7 @@ function ProductsContent() {
           <div className="pop-grid pg-grid">
             {pagedProducts.map((product, index) => (
               <div key={product.id} className="pop-card">
-                <Link href={`/product/${product.id}`} className="pop-img-wrap">
+                <a href={`https://wa.me/${waPhone}?text=${encodeURIComponent(`Hello! I'm interested in ${product.name} (${product.id}). Please share more details and pricing.`)}`} target="_blank" rel="noopener noreferrer" className="pop-img-wrap" aria-label={`Enquire about ${product.name} on WhatsApp`}>
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -111,9 +111,9 @@ function ProductsContent() {
                     priority={index < 4}
                     className="pop-img"
                   />
-                </Link>
+                </a>
                 <div className="pop-body">
-                  <Link href={`/product/${product.id}`} className="pop-name">{product.name}</Link>
+                  <a href={`https://wa.me/${waPhone}?text=${encodeURIComponent(`Hello! I'm interested in ${product.name} (${product.id}). Please share more details and pricing.`)}`} target="_blank" rel="noopener noreferrer" className="pop-name">{product.name}</a>
                   <div className="pop-actions">
                     <Link href={`/product/${product.id}`} className="pop-details"><span className="pop-view">View </span>Details</Link>
                     <a

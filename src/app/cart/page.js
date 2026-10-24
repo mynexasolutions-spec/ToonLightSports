@@ -39,7 +39,7 @@ export default function CartPage() {
             </div>
             <h3 style={{ marginBottom: '15px', fontSize: '28px', fontWeight: '800' }}>Your cart is empty</h3>
             <p style={{ color: 'var(--text-muted-dark)', marginBottom: '40px', fontSize: '16px', maxWidth: '400px' }}>Looks like you haven't added any premium fitness equipment to your cart yet.</p>
-            <Link href="/products" className="btn btn-primary" style={{ padding: '16px 40px', borderRadius: '50px', fontSize: '16px', fontWeight: '800', boxShadow: '0 10px 20px rgba(252, 227, 0, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+            <Link href="/products" className="btn btn-primary" style={{ padding: '16px 40px', borderRadius: '50px', fontSize: '16px', fontWeight: '800', boxShadow: '0 10px 20px rgba(34,197,94, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
               Browse Products
             </Link>
           </div>
@@ -84,7 +84,7 @@ export default function CartPage() {
                 <span>Total</span>
                 <span style={{ color: 'var(--primary-color)' }}>₹{getCartTotal().toLocaleString('en-IN')}</span>
               </div>
-              <button className="btn btn-primary" style={{ width: '100%', marginTop: '24px', padding: '12px', borderRadius: '50px', fontSize: '15px', fontWeight: '800', boxShadow: '0 10px 20px rgba(252, 227, 0, 0.3)' }}>Proceed to Checkout</button>
+              <button className="btn btn-primary" style={{ width: '100%', marginTop: '24px', padding: '12px', borderRadius: '50px', fontSize: '15px', fontWeight: '800', boxShadow: '0 10px 20px rgba(34,197,94, 0.3)' }}>Proceed to Checkout</button>
             </div>
           </div>
         )}

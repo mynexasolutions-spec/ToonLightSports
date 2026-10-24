@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Search, Menu, X, Phone, Mail, MapPin, House, Package, LayoutGrid, Info, ChevronRight } from 'lucide-react';
 import { siteConfig } from '../data/mockData';
 import SearchBox from './SearchBox';
+import CategoryBar from './CategoryBar';
 import { useRouter, usePathname } from 'next/navigation';
 import { motion, useReducedMotion } from 'framer-motion';
 
@@ -183,6 +184,7 @@ export default function Header() {
               {link.name}
             </RollingNavLink>
           ))}
+          <CategoryBar variant="drawer" onNavigate={() => setIsMobileMenuOpen(false)} />
           <div className="nav-cta-row">
             <a href={phoneHref} className="nav-cta-mobile"><Phone size={16} />Call Now</a>
             <a href={`https://wa.me/${contact.Phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="nav-cta-wa">
@@ -213,6 +215,7 @@ export default function Header() {
           </button>
         </div>
       </div>
+      <CategoryBar />
       <span className="header-progress" ref={progressRef} aria-hidden="true" />
     </header>
     </>

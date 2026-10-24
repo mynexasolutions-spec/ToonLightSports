@@ -28,7 +28,7 @@ export default function ProfilePage() {
           {/* Sidebar */}
           <div className="profile-sidebar">
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px', textAlign: 'center' }}>
-              <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--primary-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: '900', color: 'var(--bg-dark)', marginBottom: '10px', boxShadow: '0 10px 20px rgba(252, 227, 0, 0.3)' }}>J</div>
+              <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--primary-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: '900', color: 'var(--bg-dark)', marginBottom: '10px', boxShadow: '0 10px 20px rgba(34,197,94, 0.3)' }}>J</div>
               <h3 style={{ margin: '0 0 4px', fontSize: '16px', fontWeight: '800' }}>John Doe</h3>
               <p style={{ color: 'var(--text-muted-dark)', fontSize: '12px', margin: 0 }}>john.doe@example.com</p>
             </div>
@@ -150,7 +150,7 @@ export default function ProfilePage() {
                   </button>
                 </div>
                 <div className="address-grid">
-                  <div style={{ border: '2px solid var(--primary-color)', borderRadius: '16px', padding: '18px', background: 'rgba(252, 227, 0, 0.05)', position: 'relative' }}>
+                  <div style={{ border: '2px solid var(--primary-color)', borderRadius: '16px', padding: '18px', background: 'rgba(34,197,94, 0.05)', position: 'relative' }}>
                     <div style={{ position: 'absolute', top: '14px', right: '14px', display: 'flex', gap: '8px' }}>
                       <button style={{ background: 'none', border: 'none', color: 'var(--text-muted-dark)', cursor: 'pointer' }}><Edit2 size={15} /></button>
                       <button style={{ background: 'none', border: 'none', color: 'red', cursor: 'pointer' }}><Trash2 size={15} /></button>
