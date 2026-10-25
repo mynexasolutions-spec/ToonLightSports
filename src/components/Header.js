@@ -132,7 +132,9 @@ export default function Header() {
   React.useEffect(() => {
     setMounted(true);
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+      // hysteresis: the header changes height when it shrinks, which can nudge scrollY back
+      // across a single threshold and make it flicker (e.g. right after a filter click)
+      setScrolled((prev) => (prev ? window.scrollY > 8 : window.scrollY > 48));
       const max = document.documentElement.scrollHeight - window.innerHeight;
       if (progressRef.current) progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
     };
